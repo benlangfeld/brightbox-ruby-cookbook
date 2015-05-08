@@ -10,19 +10,16 @@ apt_repository "brightbox-ruby-ng-#{node['lsb']['codename']}" do
   notifies     :run, "execute[apt-get update]", :immediately
 end
 
-packages = ["build-essential", "ruby#{node['brightbox-ruby']['version']}"]
+packages = ["build-essential", "ruby#{node['brightbox-ruby']['version']}", "ruby-switch"]
 packages << "ruby#{node['brightbox-ruby']['version']}-dev" if node['brightbox-ruby']['install_dev_package']
-packages << "ruby-switch" if node['brightbox-ruby']['install_ruby_switch']
 packages.each do |name|
   apt_package name do
     action node['brightbox-ruby']['default_action']
   end
 end
 
-if node['brightbox-ruby']['install_ruby_switch']
-  execute "ruby-switch --set ruby#{node['brightbox-ruby']['version']}" do
-    not_if "ruby-switch --check | grep -q 'ruby#{node['brightbox-ruby']['version']}'"
-  end
+execute "ruby-switch --set ruby#{node['brightbox-ruby']['version']}" do
+  not_if "ruby-switch --check | grep -q 'ruby#{node['brightbox-ruby']['version']}'"
 end
 
 cookbook_file "/etc/gemrc" do

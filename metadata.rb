@@ -54,14 +54,6 @@ attribute 'brightbox-ruby/rubygems_version',
  recipes: ['brightbox-ruby'],
  default: nil
 
-attribute 'brightbox-ruby/install_ruby_switch',
- display_name: 'Wether of not to install ruby_switch',
- description: 'Wether of not to install ruby_switch. Defaults to false on recent versions of Ubuntu (>= 14.x) since ruby_switch has been deprecated.',
- type: 'boolean',
- required: 'optional',
- recipes: ['brightbox-ruby'],
- default: false
-
 supports 'ubuntu'
 
 depends 'apt'
