@@ -23,7 +23,6 @@ For more documentation on these builds, please see [the official brightbox docum
 * `node['brightbox-ruby']['install_dev_package']` - Install the dev package, which provides headers for gem native extensions. Available options: `true`, `false`. Defaults to `true`.
 * `node['brightbox-ruby']['gems']` - Gems to be installed by default. Defaults to `["bundler", "rake", "rubygems-bundler"]`.
 * `node['brightbox-ruby']['rubygems_version']` - The version of rubygems to enforce, or nil to use the default packaged version. Defaults to `nil`.
-* `node['brightbox-ruby']['install_ruby_switch']` - Wether of not to install ruby_switch. Defaults to false on recent versions of Ubuntu (>= 14.x) since ruby_switch has been deprecated. Defaults to `false`.
 
 # Recipes
 
